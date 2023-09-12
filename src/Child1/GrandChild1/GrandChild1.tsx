@@ -1,10 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import styles from "./GrandChild1.module.css";
-import { CountContext } from "../../state";
 
-function GrandChild1() {
-  const { count } = useContext<any>(CountContext);
-
+function GrandChild1(props: { count: number }) {
   useEffect(() => {
     console.log("Grand Child 1 mounts");
   }, []);
@@ -13,7 +10,7 @@ function GrandChild1() {
 
   return (
     <div className={styles.container}>
-      <p>Grand Child 1 - {count}</p>
+      <p>Grand Child 1 - {props.count}</p>
     </div>
   );
 }
