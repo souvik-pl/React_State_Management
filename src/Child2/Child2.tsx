@@ -1,13 +1,17 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./Child2.module.css";
+import { incrementByFive } from "../state/counterSlice";
 
-function Child2(props: { updateCount: (value: number) => void }) {
+function Child2() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     console.log("Child 2 mounts");
   }, []);
 
   function modifyCount() {
-    props.updateCount(5);
+    dispatch(incrementByFive());
   }
 
   console.log("Child 2 renders");

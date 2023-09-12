@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { Provider } from "react-redux";
 import styles from "./App.module.css";
 import Child1 from "./Child1/Child1";
 import Child2 from "./Child2/Child2";
+import store from "./state/store";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const updateCount = (value: number) => {
-    setCount(value);
-  };
-
   useEffect(() => {
     console.log("App mounts");
   }, []);
@@ -17,11 +13,13 @@ function App() {
   console.log("App renders");
 
   return (
-    <div className={styles.app_container}>
-      <p>App</p>
-      <Child1 count={count} />
-      <Child2 updateCount={updateCount} />
-    </div>
+    <Provider store={store}>
+      <div className={styles.app_container}>
+        <p>App</p>
+        <Child1 />
+        <Child2 />
+      </div>
+    </Provider>
   );
 }
 
