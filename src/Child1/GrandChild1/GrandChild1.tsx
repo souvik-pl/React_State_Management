@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import styles from "./GrandChild1.module.css";
+import useStore from "../../state/store";
 
 function GrandChild1() {
-  const count = useSelector((state: any) => state.counter.value);
+  const count = useStore((state: any) => state.count);
 
   useEffect(() => {
     console.log("Grand Child 1 mounts");

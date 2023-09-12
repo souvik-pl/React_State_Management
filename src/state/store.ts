@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./counterSlice";
+import { create } from "zustand";
 
-export default configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
+const useStore = create((set) => ({
+  count: 0,
+  incrementByFive: () => set((state: any) => ({ count: state.count + 5 })),
+}));
+
+export default useStore;
