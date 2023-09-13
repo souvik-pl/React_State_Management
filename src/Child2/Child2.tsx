@@ -1,19 +1,15 @@
-import { useEffect } from "react";
 import styles from "./Child2.module.css";
 import useStore from "../state/store";
 
 function Child2() {
-  useEffect(() => {
-    console.log("Child 2 mounts");
-  }, []);
-
-  const modifyCount = useStore((state: any) => state.incrementByFive);
+  const modifyCount = useStore((state: any) => state.incrementCount);
 
   console.log("Child 2 renders");
 
   return (
-    <div className={styles.container} onClick={modifyCount}>
+    <div className={styles.container}>
       <p>Child 2</p>
+      <button onClick={modifyCount}>Increment count</button>
     </div>
   );
 }
