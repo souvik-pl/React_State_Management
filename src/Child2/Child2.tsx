@@ -1,20 +1,12 @@
-import { useEffect } from "react";
 import styles from "./Child2.module.css";
 
-function Child2(props: { updateCount: (value: number) => void }) {
-  useEffect(() => {
-    console.log("Child 2 mounts");
-  }, []);
-
-  function modifyCount() {
-    props.updateCount(5);
-  }
-
+function Child2(props: { incrementCount: () => void }) {
   console.log("Child 2 renders");
 
   return (
-    <div className={styles.container} onClick={modifyCount}>
+    <div className={styles.container}>
       <p>Child 2</p>
+      <button onClick={props.incrementCount}>Increment count</button>
     </div>
   );
 }
