@@ -1,24 +1,20 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Child2.module.css";
-import { incrementByFive } from "../state/counterSlice";
+import { incrementCount } from "../state/counterSlice";
 
 function Child2() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("Child 2 mounts");
-  }, []);
-
   function modifyCount() {
-    dispatch(incrementByFive());
+    dispatch(incrementCount());
   }
 
   console.log("Child 2 renders");
 
   return (
-    <div className={styles.container} onClick={modifyCount}>
+    <div className={styles.container}>
       <p>Child 2</p>
+      <button onClick={modifyCount}>Increment count</button>
     </div>
   );
 }
